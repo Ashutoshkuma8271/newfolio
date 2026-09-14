@@ -77,17 +77,14 @@ export default function Footer() {
         {/* Main footer content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
           <div className="sm:col-span-2">
-            <div className="flex items-center gap-3 mb-5 sm:mb-6">
-              <span className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 border border-gold-400/40 rounded-full flex-shrink-0">
-                <span className="font-serif text-lg sm:text-xl text-gold-300 font-medium">ZK</span>
-              </span>
-              <div className="flex flex-col">
-                <span className="font-serif text-xl sm:text-2xl text-ink-50 tracking-wide">Zeenat Kureshi</span>
-                <span className="font-sans text-[8px] sm:text-[10px] tracking-[0.2em] uppercase text-gold-400/60 mt-0.5">
-                  Producer · Commissioner · President
-                </span>
-              </div>
-            </div>
+            <Link to="/" className="inline-block mb-5 sm:mb-6 focus:outline-none focus-visible:ring-1 focus-visible:ring-gold-400/50 rounded-sm">
+              <img
+                src="/logo-horizontal-dark.png"
+                alt="Zeenat Kureshi — Film Producer · Trade Commissioner · National President"
+                className="h-10 sm:h-11 md:h-13 w-auto max-w-[280px] sm:max-w-none object-contain select-none transition-all duration-300 hover:opacity-90"
+                style={{ maxHeight: '52px', width: 'auto' }}
+              />
+            </Link>
             <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed max-w-md">
               Bridging borders through trade, storytelling, and women's empowerment. Building bridges between the GCC and India with vision, integrity, and impact.
             </p>

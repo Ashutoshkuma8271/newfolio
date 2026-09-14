@@ -101,7 +101,7 @@ export default function About() {
             <Reveal delay={200}>
               <div className="relative">
                 <div
-                  className="aspect-[4/5] bg-cover bg-center"
+                  className="aspect-[4/5] bg-cover bg-top"
                   style={{ backgroundImage: `url(${heroImg})` }}
                 />
                 <div className="absolute -bottom-6 -left-6 glass-card p-6 max-w-xs hidden md:block">

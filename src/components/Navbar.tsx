@@ -32,31 +32,30 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isHome
-            ? 'bg-ink-950/95 backdrop-blur-xl border-b border-gold-400/10 py-3'
-            : 'bg-ink-950/70 backdrop-blur-md py-3.5 md:py-5'
+            ? 'bg-ink-950/95 backdrop-blur-xl border-b border-gold-400/15 py-2 sm:py-2.5 md:py-3 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
+            : 'bg-ink-950/70 backdrop-blur-md py-2.5 sm:py-3.5 md:py-4'
         }`}
       >
-        <nav className="section-padding flex items-center justify-between">
-          <Link to="/" className="group flex items-center gap-2.5 sm:gap-3 leading-none">
-            <span className="relative flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 border border-gold-400/40 rounded-full transition-all duration-500 group-hover:border-gold-400/70 group-hover:bg-gold-400/5 flex-shrink-0">
-              <span className="font-serif text-sm sm:text-base md:text-lg text-gold-300 font-medium">ZK</span>
-            </span>
-            <span className="flex flex-col">
-              <span className="font-serif text-base sm:text-lg md:text-xl text-ink-50 tracking-wide transition-colors duration-300 group-hover:text-gold-200">
-                Zeenat Kureshi
-              </span>
-              <span className="font-sans text-[7px] sm:text-[9px] tracking-[0.16em] sm:tracking-[0.2em] uppercase text-gold-400/70 mt-0.5">
-                Producer · Commissioner · President
-              </span>
-            </span>
+        <nav className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 flex items-center justify-between">
+          <Link
+            to="/"
+            className="group flex items-center leading-none focus:outline-none focus-visible:ring-1 focus-visible:ring-gold-400/50 rounded-sm py-1"
+            aria-label="Zeenat Kureshi Home"
+          >
+            <img
+              src="/logo-horizontal-dark.png"
+              alt="Zeenat Kureshi — Film Producer · Trade Commissioner · National President"
+              className="h-9 xs:h-10 sm:h-11 md:h-12 lg:h-13.5 xl:h-14 w-auto max-w-[220px] xs:max-w-[260px] sm:max-w-[320px] md:max-w-none object-contain select-none transition-all duration-300 group-hover:opacity-95 group-hover:scale-[1.02]"
+              style={{ maxHeight: '56px', width: 'auto' }}
+            />
           </Link>
 
-          <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
+          <div className="hidden xl:flex items-center gap-6 2xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-sans text-xs tracking-[0.18em] uppercase transition-colors duration-300 relative group py-1 ${
+                className={`font-sans text-xs tracking-[0.2em] uppercase transition-colors duration-300 relative group py-1.5 font-medium ${
                   location.pathname === link.path
                     ? 'text-gold-300'
                     : 'text-ink-200 hover:text-gold-300'
@@ -64,7 +63,7 @@ export default function Navbar() {
               >
                 {link.label}
                 <span
-                  className={`absolute bottom-0 left-0 h-px bg-gold-400 transition-all duration-500 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-gold transition-all duration-500 ${
                     location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -74,7 +73,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="xl:hidden text-ink-50 hover:text-gold-300 transition-colors p-2.5 -mr-2 flex items-center justify-center"
+            className="xl:hidden text-ink-50 hover:text-gold-300 transition-colors p-2 -mr-1.5 flex items-center justify-center focus:outline-none"
             aria-label="Toggle menu"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -88,7 +87,15 @@ export default function Navbar() {
           open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-7 sm:gap-8 px-6 text-center">
+        <div className="flex flex-col items-center justify-center h-full gap-6 sm:gap-7 px-6 text-center">
+          <Link to="/" onClick={() => setOpen(false)} className="mb-2">
+            <img
+              src="/logo-monogram-dark.png"
+              alt="Zeenat Kureshi"
+              className="w-14 h-14 object-contain opacity-90 hover:opacity-100 transition-opacity"
+              style={{ width: '56px', height: '56px' }}
+            />
+          </Link>
           {navLinks.map((link, i) => (
             <Link
               key={link.path}

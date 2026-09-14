@@ -50,19 +50,19 @@ export default function Home() {
   return (
     <div className="bg-ink-950">
       {/* Cinematic Hero */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 sm:pt-28 md:pt-24 md:pb-20">
-        {/* Background image */}
+      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center overflow-hidden pt-24 pb-16 sm:pt-28 md:pt-24 md:pb-20">
+        {/* Background image - precisely positioned so the subject's head, face, and presence are prominently visible */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-[center_top_15%] sm:bg-[right_8%_top_22%] md:bg-[right_10%_top_25%] lg:bg-[right_8%_top_28%] xl:bg-[right_6%_top_30%] transition-transform duration-1000 scale-100"
           style={{ backgroundImage: `url(${heroPortrait})` }}
         />
-        {/* Cinematic overlays */}
-        <div className="absolute inset-0 hero-radial" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/40 sm:hidden" />
+        {/* Cinematic overlays - transparent on the right to reveal the subject, dark on the left for text readability */}
+        <div className="absolute inset-0 hero-radial opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/75 to-transparent sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/30 sm:hidden" />
 
         {/* Floating gold orb */}
-        <div className="absolute top-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gold-400/10 blur-3xl animate-pulse-slow" />
+        <div className="absolute top-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gold-400/15 blur-3xl animate-pulse-slow" />
 
         {/* Content */}
         <div className="relative section-padding w-full z-10">
@@ -70,26 +70,26 @@ export default function Home() {
             <div className="animate-fade-down">
               <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
                 <div className="w-8 sm:w-12 h-px bg-gold-400" />
-                <span className="font-sans text-[11px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-300 font-medium">
-                  Welcome
+                <span className="font-sans text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-300 font-medium">
+                  Official Portal
                 </span>
               </div>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-[1.04] text-ink-50 mb-4 sm:mb-6 animate-fade-up">
+            <h1 className="font-serif text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.04] text-ink-50 mb-4 sm:mb-6 animate-fade-up">
               Zeenat Kureshi
             </h1>
 
-            <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5 sm:gap-y-2 mb-6 sm:mb-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-2 mb-6 sm:mb-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
               {['Film Producer', 'GCC–India Trade Commissioner', 'National President'].map((role, i) => (
                 <span key={role} className="font-sans text-xs sm:text-sm md:text-base text-gold-200 tracking-wide flex items-center gap-2 sm:gap-3">
-                  {i > 0 && <span className="text-gold-400/40">|</span>}
+                  {i > 0 && <span className="text-gold-400/50">|</span>}
                   {role}
                 </span>
               ))}
             </div>
 
-            <p className="font-sans text-xs sm:text-sm md:text-base lg:text-lg text-ink-200 leading-relaxed max-w-2xl mb-8 sm:mb-10 md:mb-12 animate-fade-up" style={{ animationDelay: '400ms' }}>
+            <p className="font-sans text-sm sm:text-base md:text-lg text-ink-100 leading-relaxed max-w-2xl mb-8 sm:mb-10 md:mb-12 animate-fade-up font-light" style={{ animationDelay: '400ms' }}>
               A visionary leader bridging the Gulf and the subcontinent — producing stories that resonate,
               facilitating trade that transforms economies, and championing women who shape the future.
               With a presence across Dubai and Mumbai, the work spans cinema, commerce, and community.

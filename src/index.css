@@ -20,7 +20,7 @@
   }
 
   ::selection {
-    background-color: #c691283;
+    background-color: #c69128;
     color: #15130f;
   }
 }
@@ -31,28 +31,28 @@
   }
 
   .text-gradient-gold {
-    background: linear-gradient(135deg, #e0c069 0%, #d4a843 40%, #f5edd3 60%, #c691283 100%);
+    background: linear-gradient(135deg, #e0c069 0%, #d4a843 40%, #f5edd3 60%, #c69128 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .bg-gradient-gold {
-    background: linear-gradient(135deg, #e0c069 0%, #d4a843 50%, #c691283 100%);
+    background: linear-gradient(135deg, #e0c069 0%, #d4a843 50%, #c69128 100%);
   }
 
   .glass-card {
-    background: rgba(34, 31, 25, 0.6);
+    background: rgba(34, 31, 25, 0.65);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(196, 145, 40, 0.15);
+    border: 1px solid rgba(196, 145, 40, 0.18);
   }
 
   .glass-card-light {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .btn-primary {
@@ -64,11 +64,11 @@
   }
 
   .section-padding {
-    @apply px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 max-w-7xl mx-auto;
+    @apply px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 max-w-7xl mx-auto;
   }
 
   .heading-eyebrow {
-    @apply font-sans text-xs tracking-[0.3em] uppercase text-gold-400 mb-3 sm:mb-4;
+    @apply font-sans text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-400 mb-3 sm:mb-4 font-medium;
   }
 
   .heading-serif {
@@ -116,22 +116,22 @@
   transform: translateY(0);
 }
 
-/* Cinematic hero overlay */
+/* Cinematic hero overlay - perfectly balanced for image clarity & readability */
 .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(21, 19, 15, 0.5) 0%,
-    rgba(21, 19, 15, 0.7) 50%,
-    rgba(21, 19, 15, 0.95) 100%
+    rgba(21, 19, 15, 0.35) 0%,
+    rgba(21, 19, 15, 0.55) 50%,
+    rgba(21, 19, 15, 0.92) 100%
   );
 }
 
 .hero-radial {
   background: radial-gradient(
-    ellipse at center,
-    rgba(21, 19, 15, 0.2) 0%,
-    rgba(21, 19, 15, 0.6) 60%,
-    rgba(21, 19, 15, 0.95) 100%
+    ellipse at 65% 40%,
+    rgba(21, 19, 15, 0.05) 0%,
+    rgba(21, 19, 15, 0.45) 55%,
+    rgba(21, 19, 15, 0.9) 100%
   );
 }
 
@@ -155,7 +155,7 @@
 /* Gold divider line */
 .gold-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c691283, transparent);
+  background: linear-gradient(90deg, transparent, #c69128, transparent);
 }
 
 /* Input styles */
