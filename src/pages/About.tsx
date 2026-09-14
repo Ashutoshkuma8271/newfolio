@@ -62,6 +62,7 @@ export default function About() {
         title={<>The Woman Behind <span className="text-gradient-gold">the Vision</span></>}
         subtitle="A leader whose work spans cinema, commerce, and community — connecting the GCC and India with purpose and precision."
         image={heroImg}
+        imagePosition="bg-[center_35%] sm:bg-[right_15%_35%] md:bg-[right_12%_32%] lg:bg-[right_8%_32%]"
       />
 
       {/* Biography */}

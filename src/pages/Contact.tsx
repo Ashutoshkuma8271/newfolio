@@ -62,6 +62,7 @@ export default function Contact() {
         title={<>Let's <span className="text-gradient-gold">Connect</span></>}
         subtitle="Whether it's a collaboration, media inquiry, or investment discussion — every conversation starts here."
         image={heroImg}
+        imagePosition="bg-[center_30%] sm:bg-[right_12%_30%] lg:bg-[right_8%_30%]"
       />
 
       {/* Contact Info Cards */}
