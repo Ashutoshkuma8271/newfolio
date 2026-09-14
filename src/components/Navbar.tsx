@@ -55,7 +55,7 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-sans text-xs tracking-[0.2em] uppercase transition-colors duration-300 relative group py-1.5 font-medium ${
+                className={`font-display text-xs tracking-[0.2em] uppercase transition-colors duration-300 relative group py-1.5 font-medium ${
                   location.pathname === link.path
                     ? 'text-gold-300'
                     : 'text-ink-200 hover:text-gold-300'

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Film, Users, TrendingUp, Quote } from 'lucide-react';
+import { ArrowRight, Globe, Film, Users, TrendingUp, Quote, Sparkles } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import { useParallax } from '@/hooks/useParallax';
 
 const heroPortrait =
   'https://images.pexels.com/photos/4342352/pexels-photo-4342352.jpeg?auto=compress&cs=tinysrgb&w=1400';
@@ -47,22 +48,33 @@ const verticals = [
 const mediaLogos = ['Forbes', 'Khaleej Times', 'Gulf News', 'NDTV', 'Times of India', 'Arabian Business'];
 
 export default function Home() {
+  const heroParallax = useParallax<HTMLElement>({ speed: 0.2, direction: 'down' });
+  const quoteParallax = useParallax<HTMLElement>({ speed: 0.15, direction: 'down' });
+  const ctaParallax = useParallax<HTMLElement>({ speed: 0.18, direction: 'down' });
+
   return (
-    <div className="bg-ink-950">
-      {/* Cinematic Hero */}
-      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center overflow-hidden pt-24 pb-16 sm:pt-28 md:pt-24 md:pb-20">
-        {/* Background image - precisely positioned so the subject's head, face, and presence are prominently visible */}
+    <div className="bg-ink-950 bg-luxury-grid">
+      {/* Cinematic Hero with Parallax */}
+      <section
+        ref={heroParallax.ref}
+        className="relative min-h-[92vh] sm:min-h-screen flex items-center overflow-hidden pt-24 pb-16 sm:pt-28 md:pt-24 md:pb-20"
+      >
+        {/* Background image - precisely positioned with smooth hardware-accelerated parallax motion */}
         <div
-          className="absolute inset-0 bg-cover bg-[center_top_15%] sm:bg-[right_8%_top_22%] md:bg-[right_10%_top_25%] lg:bg-[right_8%_top_28%] xl:bg-[right_6%_top_30%] transition-transform duration-1000 scale-100"
-          style={{ backgroundImage: `url(${heroPortrait})` }}
+          className="absolute inset-0 bg-cover bg-[center_top_15%] sm:bg-[right_8%_top_22%] md:bg-[right_10%_top_25%] lg:bg-[right_8%_top_28%] xl:bg-[right_6%_top_30%] transition-transform duration-700 ease-out will-change-transform scale-105"
+          style={{
+            backgroundImage: `url(${heroPortrait})`,
+            transform: `translate3d(0, ${Math.min(50, Math.max(-50, heroParallax.offset * 0.15))}px, 0) scale(1.05)`,
+          }}
         />
         {/* Cinematic overlays - transparent on the right to reveal the subject, dark on the left for text readability */}
         <div className="absolute inset-0 hero-radial opacity-80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/75 to-transparent sm:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/30 sm:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/75 to-transparent sm:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/30 sm:hidden pointer-events-none" />
 
-        {/* Floating gold orb */}
-        <div className="absolute top-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gold-400/15 blur-3xl animate-pulse-slow" />
+        {/* Ambient floating gold orbs with distinct motion speeds */}
+        <div className="absolute top-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gold-400/15 blur-3xl animate-float-slow pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/12 w-64 h-64 rounded-full bg-gold-300/10 blur-3xl animate-float-reverse pointer-events-none" />
 
         {/* Content */}
         <div className="relative section-padding w-full z-10">
@@ -70,7 +82,8 @@ export default function Home() {
             <div className="animate-fade-down">
               <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
                 <div className="w-8 sm:w-12 h-px bg-gold-400" />
-                <span className="font-sans text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-300 font-medium">
+                <span className="font-display text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-300 font-semibold flex items-center gap-2">
+                  <Sparkles size={13} className="text-gold-400 animate-pulse" />
                   Official Portal
                 </span>
               </div>
@@ -82,7 +95,7 @@ export default function Home() {
 
             <div className="flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-2 mb-6 sm:mb-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
               {['Film Producer', 'GCC–India Trade Commissioner', 'National President'].map((role, i) => (
-                <span key={role} className="font-sans text-xs sm:text-sm md:text-base text-gold-200 tracking-wide flex items-center gap-2 sm:gap-3">
+                <span key={role} className="font-display text-xs sm:text-sm md:text-base text-gold-200 tracking-wide flex items-center gap-2 sm:gap-3 font-medium">
                   {i > 0 && <span className="text-gold-400/50">|</span>}
                   {role}
                 </span>
@@ -96,9 +109,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-fade-up" style={{ animationDelay: '600ms' }}>
-              <Link to="/contact" className="btn-primary text-center">
+              <Link to="/contact" className="btn-primary text-center group">
                 Collaborate
-                <ArrowRight size={15} />
+                <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link to="/media" className="btn-outline text-center">
                 Media Inquiry
@@ -110,9 +123,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator with smooth glow */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in hidden sm:flex" style={{ animationDelay: '1s' }}>
-          <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-ink-400">Scroll</span>
+          <span className="font-display text-[10px] tracking-[0.3em] uppercase text-ink-400 font-semibold">Scroll</span>
           <div className="w-px h-10 bg-gradient-to-b from-gold-400 to-transparent animate-pulse" />
         </div>
       </section>
@@ -185,10 +198,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote / Statement */}
-      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden">
+      {/* Quote / Statement with Parallax */}
+      <section ref={quoteParallax.ref} className="py-20 sm:py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-ink-900" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-gold-400/20 to-transparent" />
+        
+        {/* Parallax decorative light flare */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold-400/5 blur-[120px] pointer-events-none transition-transform duration-700 ease-out"
+          style={{
+            transform: `translate3d(-50%, calc(-50% + ${quoteParallax.offset * 0.1}px), 0)`,
+          }}
+        />
+
         <div className="section-padding relative">
           <Reveal>
             <div className="max-w-4xl mx-auto text-center">
@@ -199,7 +221,7 @@ export default function Home() {
               </p>
               <div className="mt-8 sm:mt-10 flex items-center justify-center gap-3">
                 <div className="w-6 sm:w-8 h-px bg-gold-400" />
-                <span className="font-sans text-xs sm:text-sm tracking-[0.2em] uppercase text-gold-300 font-medium">Zeenat Kureshi</span>
+                <span className="font-display text-xs sm:text-sm tracking-[0.25em] uppercase text-gold-300 font-semibold">Zeenat Kureshi</span>
                 <div className="w-6 sm:w-8 h-px bg-gold-400" />
               </div>
             </div>
@@ -208,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Stats strip */}
-      <section className="py-16 sm:py-20 border-y border-gold-400/10">
+      <section className="py-16 sm:py-20 border-y border-gold-400/10 bg-ink-950/60 backdrop-blur-sm">
         <div className="section-padding">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {[
@@ -218,9 +240,9 @@ export default function Home() {
               { value: '10K+', label: 'Women Empowered' },
             ].map((stat, i) => (
               <Reveal key={stat.label} delay={i * 100}>
-                <div className="text-center p-2">
-                  <p className="font-serif text-4xl sm:text-5xl md:text-6xl text-gradient-gold mb-1.5 sm:mb-2">{stat.value}</p>
-                  <p className="font-sans text-[10px] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-ink-400">{stat.label}</p>
+                <div className="text-center p-2 group">
+                  <p className="font-serif text-4xl sm:text-5xl md:text-6xl text-gradient-gold mb-1.5 sm:mb-2 group-hover:scale-105 transition-transform duration-500">{stat.value}</p>
+                  <p className="font-display text-[10px] sm:text-xs tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-400 font-medium">{stat.label}</p>
                 </div>
               </Reveal>
             ))}
@@ -228,13 +250,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden">
+      {/* Final CTA with Parallax */}
+      <section ref={ctaParallax.ref} className="py-20 sm:py-24 md:py-32 relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${tradeImg})` }}
+          className="absolute inset-0 bg-cover bg-center opacity-25 transition-transform duration-700 ease-out will-change-transform scale-110"
+          style={{
+            backgroundImage: `url(${tradeImg})`,
+            transform: `translate3d(0, ${Math.min(40, Math.max(-40, ctaParallax.offset * 0.12))}px, 0) scale(1.08)`,
+          }}
         />
-        <div className="absolute inset-0 bg-ink-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/90 via-ink-950/80 to-ink-950" />
         <div className="section-padding relative">
           <Reveal>
             <div className="max-w-3xl mx-auto text-center">
@@ -246,9 +271,9 @@ export default function Home() {
                 invest across borders — the conversation starts here.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Link to="/contact" className="btn-primary text-center">
+                <Link to="/contact" className="btn-primary text-center group">
                   Start a Conversation
-                  <ArrowRight size={15} />
+                  <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <Link to="/about" className="btn-outline text-center">
                   Learn More

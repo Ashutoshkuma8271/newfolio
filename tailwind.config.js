@@ -58,7 +58,9 @@ export default {
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Jost', 'system-ui', 'sans-serif'],
+        display: ['Cinzel', '"Cormorant Garamond"', 'serif'],
+        sans: ['Jost', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        accent: ['"Playfair Display"', '"Cormorant Garamond"', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
@@ -69,7 +71,10 @@ export default {
         'shimmer': 'shimmer 3s linear infinite',
         'skeleton': 'skeletonWave 1.8s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'floatSlow 8s ease-in-out infinite',
+        'float-reverse': 'floatReverse 7s ease-in-out infinite',
         'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
+        'glow': 'glow 3s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -104,9 +109,21 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-15px)' },
         },
+        floatSlow: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(10px, -20px) scale(1.05)' },
+        },
+        floatReverse: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(-12px, 15px) scale(0.96)' },
+        },
         pulseSlow: {
           '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.7' },
+          '50%': { opacity: '0.75' },
+        },
+        glow: {
+          '0%': { filter: 'drop-shadow(0 0 10px rgba(212, 168, 67, 0.2))' },
+          '100%': { filter: 'drop-shadow(0 0 25px rgba(212, 168, 67, 0.6))' },
         },
       },
     },
