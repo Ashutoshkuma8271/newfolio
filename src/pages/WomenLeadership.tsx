@@ -185,10 +185,13 @@ export default function WomenLeadership() {
               </div>
             </Reveal>
             <Reveal delay={200}>
-              <div
-                className="aspect-[4/3] bg-cover bg-center"
-                style={{ backgroundImage: `url(${eventImg})` }}
-              />
+              <div className="relative group">
+                <div className="absolute -inset-1.5 border border-gold-400/20 translate-x-2 translate-y-2 pointer-events-none hidden sm:block" />
+                <div
+                  className="relative aspect-[4/3] bg-cover bg-top border border-gold-400/20 shadow-2xl overflow-hidden"
+                  style={{ backgroundImage: `url(${eventImg})` }}
+                />
+              </div>
             </Reveal>
           </div>
         </div>

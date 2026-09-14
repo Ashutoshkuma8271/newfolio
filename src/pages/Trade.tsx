@@ -104,10 +104,13 @@ export default function Trade() {
               </div>
             </Reveal>
             <Reveal delay={200}>
-              <div
-                className="aspect-[16/10] bg-cover bg-center"
-                style={{ backgroundImage: `url(${dealImg})` }}
-              />
+              <div className="relative group">
+                <div className="absolute -inset-1.5 border border-gold-400/20 translate-x-2 translate-y-2 pointer-events-none hidden sm:block" />
+                <div
+                  className="relative aspect-[16/10] bg-cover bg-top border border-gold-400/20 shadow-2xl overflow-hidden"
+                  style={{ backgroundImage: `url(${dealImg})` }}
+                />
+              </div>
             </Reveal>
           </div>
         </div>
