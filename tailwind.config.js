@@ -1,0 +1,115 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        ink: {
+          50: '#f6f5f1',
+          100: '#e9e7df',
+          200: '#d3cfc0',
+          300: '#b5ad95',
+          400: '#988f72',
+          500: '#7d7355',
+          600: '#635b41',
+          700: '#4d4632',
+          800: '#363124',
+          900: '#221f19',
+          950: '#15130f',
+        },
+        gold: {
+          50: '#fbf8ee',
+          100: '#f5edd3',
+          200: '#ecd99f',
+          300: '#e0c069',
+          400: '#d4a843',
+          500: '#c691283',
+          600: '#a87520',
+          700: '#85591d',
+          800: '#6e471d',
+          900: '#5d3c1c',
+        },
+        wine: {
+          50: '#fcf4f4',
+          100: '#fae8e8',
+          200: '#f5d3d3',
+          300: '#ecadad',
+          400: '#df7777',
+          500: '#cd4848',
+          600: '#b83030',
+          700: '#992525',
+          800: '#7d2222',
+          900: '#682020',
+          950: '#3a0f0f',
+        },
+        emerald2: {
+          50: '#f0fdf7',
+          100: '#dcfce9',
+          200: '#bbf7d3',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
+          700: '#15803d',
+          800: '#166534',
+          900: '#14532d',
+          950: '#052e16',
+        },
+      },
+      fontFamily: {
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['Jost', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.8s ease-out forwards',
+        'fade-up': 'fadeUp 0.8s ease-out forwards',
+        'fade-down': 'fadeDown 0.8s ease-out forwards',
+        'scale-in': 'scaleIn 0.6s ease-out forwards',
+        'slide-right': 'slideRight 1s ease-out forwards',
+        'shimmer': 'shimmer 3s linear infinite',
+        'skeleton': 'skeletonWave 1.8s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeDown: {
+          '0%': { opacity: '0', transform: 'translateY(-30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        slideRight: {
+          '0%': { opacity: '0', transform: 'translateX(-40px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        skeletonWave: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+        pulseSlow: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.7' },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
