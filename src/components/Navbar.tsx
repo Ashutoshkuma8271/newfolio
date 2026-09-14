@@ -30,10 +30,8 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled || !isHome
-            ? 'bg-ink-950/95 backdrop-blur-xl border-b border-gold-400/15 py-2 sm:py-2.5 md:py-3 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
-            : 'bg-ink-950/70 backdrop-blur-md py-2.5 sm:py-3.5 md:py-4'
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 bg-ink-950/95 backdrop-blur-xl border-b border-gold-400/15 py-2.5 sm:py-3 md:py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ${
+          scrolled ? 'bg-ink-950/98 shadow-[0_8px_32px_rgba(0,0,0,0.7)]' : ''
         }`}
       >
         <nav className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 flex items-center justify-between">

@@ -21,13 +21,13 @@ export default function PageHero({
   const { ref, offset } = useParallax<HTMLDivElement>({ speed: 0.18, direction: 'down' });
 
   return (
-    <section ref={ref} className={`relative h-auto min-h-[440px] sm:min-h-[500px] md:h-[60vh] md:min-h-[540px] flex items-end overflow-hidden ${className}`}>
+    <section ref={ref} className={`relative bg-ink-950 h-auto min-h-[440px] sm:min-h-[500px] md:h-[60vh] md:min-h-[540px] flex items-end overflow-hidden ${className}`}>
       {/* Background image with smooth hardware-accelerated parallax motion */}
       <div
-        className={`absolute inset-0 bg-cover ${imagePosition} transition-transform duration-700 ease-out will-change-transform scale-105`}
+        className={`absolute inset-0 bg-cover ${imagePosition} will-change-transform scale-105`}
         style={{
           backgroundImage: `url(${image})`,
-          transform: `translate3d(0, ${Math.min(45, Math.max(-45, offset * 0.15))}px, 0) scale(1.05)`,
+          transform: `translate3d(0, ${Math.min(40, Math.max(-40, offset * 0.12))}px, 0) scale(1.05)`,
         }}
       />
       {/* Floating subtle gold ambient orb */}

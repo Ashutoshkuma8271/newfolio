@@ -66,28 +66,26 @@ export default function Contact() {
       />
 
       {/* Contact Info Cards */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Reach Out"
-              title={<>Multiple ways to <span className="text-gradient-gold">connect</span></>}
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Reach Out"
+            title={<>Multiple ways to <span className="text-gradient-gold">connect</span></>}
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-16">
             {contactInfo.map((info, i) => (
-              <Reveal key={info.label} delay={i * 100}>
+              <Reveal key={info.label} delay={i * 100} direction="up">
                 <a
                   href={info.href ?? undefined}
-                  className={`glass-card p-6 sm:p-8 text-center h-full transition-all duration-500 group ${
-                    info.href ? 'hover:border-gold-400/30 cursor-pointer' : ''
+                  className={`glass-card p-6 sm:p-8 text-center h-full transition-all duration-500 group card-sheen hover:-translate-y-1.5 ${
+                    info.href ? 'hover:border-gold-400/50 cursor-pointer' : ''
                   } block`}
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 sm:mb-5 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
                     <info.icon size={22} className="text-gold-300 sm:w-6 sm:h-6" />
                   </div>
-                  <p className="font-sans text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400 mb-1.5 sm:mb-2">{info.label}</p>
+                  <p className="font-display text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400 mb-1.5 sm:mb-2 font-semibold">{info.label}</p>
                   <p className="font-serif text-lg sm:text-xl text-ink-50 break-all sm:break-normal">{info.value}</p>
                 </a>
               </Reveal>
@@ -96,28 +94,28 @@ export default function Contact() {
 
           {/* WhatsApp + Socials */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            <Reveal>
+            <Reveal direction="left">
               <a
                 href="https://wa.me/97140000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-6 sm:p-8 flex items-center gap-4 sm:gap-5 hover:border-gold-400/30 transition-all duration-500 group h-full"
+                className="glass-card p-6 sm:p-8 flex items-center gap-4 sm:gap-5 hover:border-gold-400/50 transition-all duration-500 group h-full card-sheen hover:-translate-y-1"
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 border border-gold-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
                   <MessageCircle size={22} className="text-gold-300 sm:w-6 sm:h-6" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-serif text-xl sm:text-2xl text-ink-50 mb-1">WhatsApp Business</h3>
-                  <p className="font-sans text-xs sm:text-sm text-ink-300">Chat directly for quick responses and inquiries</p>
+                  <p className="font-sans text-xs sm:text-sm text-ink-300 font-light">Chat directly for quick responses and inquiries</p>
                 </div>
-                <ArrowRight size={18} className="text-gold-300 ml-auto group-hover:translate-x-1 transition-transform duration-500 flex-shrink-0" />
+                <ArrowRight size={18} className="text-gold-300 ml-auto group-hover:translate-x-1.5 transition-transform duration-500 flex-shrink-0" />
               </a>
             </Reveal>
 
-            <Reveal delay={100}>
-              <div className="glass-card p-6 sm:p-8 h-full">
+            <Reveal delay={100} direction="right">
+              <div className="glass-card p-6 sm:p-8 h-full card-sheen">
                 <h3 className="font-serif text-xl sm:text-2xl text-ink-50 mb-2 sm:mb-4">Follow Along</h3>
-                <p className="font-sans text-xs sm:text-sm text-ink-300 mb-4 sm:mb-5">Stay updated on social media</p>
+                <p className="font-sans text-xs sm:text-sm text-ink-300 mb-4 sm:mb-5 font-light">Stay updated on social media</p>
                 <div className="flex gap-2.5 sm:gap-3">
                   {socials.map((social, i) => (
                     <a
@@ -125,7 +123,7 @@ export default function Contact() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 sm:w-11 sm:h-11 border border-ink-700 flex items-center justify-center text-ink-300 hover:border-gold-400/50 hover:text-gold-300 transition-all duration-300"
+                      className="w-10 h-10 sm:w-11 sm:h-11 border border-ink-700 flex items-center justify-center text-ink-300 hover:border-gold-400/50 hover:text-gold-300 hover:scale-105 transition-all duration-300"
                       aria-label={social.label}
                     >
                       <social.icon size={18} />

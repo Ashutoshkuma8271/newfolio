@@ -82,30 +82,33 @@ export default function Trade() {
       />
 
       {/* Overview */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
-            <Reveal>
+            <Reveal direction="left">
               <div>
-                <p className="heading-eyebrow">The Opportunity</p>
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-5 sm:w-8 h-px bg-gold-400" />
+                  <p className="heading-eyebrow !mb-0">The Opportunity</p>
+                </div>
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-50 mb-4 sm:mb-6 leading-tight">
-                  Two markets. One bridge.
+                  Two markets. <span className="text-gradient-gold">One bridge.</span>
                 </h2>
-                <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed mb-4 sm:mb-6">
+                <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed mb-4 sm:mb-6 font-light">
                   The GCC and India represent one of the world's most dynamic trade corridors —
                   a $150+ billion relationship growing by the year. Navigating it requires
                   local knowledge, institutional relationships, and strategic foresight.
                 </p>
-                <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed">
+                <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed font-light">
                   Through years of hands-on facilitation, Zeenat Kureshi has helped businesses
                   and investors enter markets, structure deals, and build lasting commercial
                   partnerships across both regions.
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={200}>
+            <Reveal delay={200} direction="right">
               <div
-                className="aspect-[16/10] bg-cover bg-center"
+                className="aspect-[16/10] bg-cover bg-center premium-card card-sheen shadow-2xl transition-all duration-700"
                 style={{ backgroundImage: `url(${dealImg})` }}
               />
             </Reveal>
@@ -114,25 +117,24 @@ export default function Trade() {
       </section>
 
       {/* Initiatives */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Services"
-              title={<>What we <span className="text-gradient-gold">facilitate</span></>}
-              subtitle="Comprehensive support across the trade and investment lifecycle."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Services"
+            title={<>What we <span className="text-gradient-gold">facilitate</span></>}
+            subtitle="Comprehensive support across the trade and investment lifecycle."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {initiatives.map((item, i) => (
-              <Reveal key={item.title} delay={i * 120}>
-                <div className="glass-card p-6 sm:p-8 h-full hover:border-gold-400/30 transition-all duration-500 group">
+              <Reveal key={item.title} delay={i * 120} direction="up">
+                <div className="glass-card p-6 sm:p-8 h-full hover:border-gold-400/50 transition-all duration-500 group card-sheen hover:-translate-y-1">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 border border-gold-400/30 flex items-center justify-center mb-5 sm:mb-6 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
                     <item.icon size={22} className="text-gold-300 sm:w-6 sm:h-6" />
                   </div>
                   <h3 className="font-serif text-xl sm:text-2xl text-ink-50 mb-2 sm:mb-3">{item.title}</h3>
-                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed mb-5 sm:mb-6">{item.description}</p>
+                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed mb-5 sm:mb-6 font-light">{item.description}</p>
                   <ul className="space-y-2">
                     {item.points.map((point) => (
                       <li key={point} className="flex items-center gap-2 font-sans text-xs sm:text-sm text-ink-200">

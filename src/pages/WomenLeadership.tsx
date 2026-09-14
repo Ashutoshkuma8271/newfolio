@@ -88,36 +88,46 @@ export default function WomenLeadership() {
       />
 
       {/* Intro */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Reveal direction="down">
+              <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-6 sm:w-10 h-px bg-gold-400/80" />
+                <p className="heading-eyebrow !mb-0">National Movement</p>
+                <div className="w-6 sm:w-10 h-px bg-gold-400/80" />
+              </div>
+            </Reveal>
+            <Reveal direction="up" delay={100}>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-50 mb-4 sm:mb-6 leading-tight">
-                All India Jamiatul Quresh Women Cell
+                All India Jamiatul Quresh <span className="text-gradient-gold">Women Cell</span>
               </h2>
-              <p className="font-sans text-xs sm:text-sm md:text-base lg:text-lg text-ink-300 leading-relaxed">
+            </Reveal>
+            <Reveal direction="up" delay={200}>
+              <p className="font-sans text-xs sm:text-sm md:text-base lg:text-lg text-ink-300 leading-relaxed font-light">
                 Under the national presidency of Zeenat Kureshi, the Women Cell leads initiatives
                 that empower women through education, entrepreneurship, and leadership development.
                 With a presence across India and growing partnerships in the GCC, the Cell serves
                 as a catalyst for women's economic participation and community transformation.
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Mission / Values / Reach */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
-        <div className="section-padding">
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
+        <div className="section-padding relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mission.map((item, i) => (
-              <Reveal key={item.title} delay={i * 120}>
-                <div className="glass-card p-6 sm:p-8 h-full text-center hover:border-gold-400/30 transition-all duration-500 group">
+              <Reveal key={item.title} delay={i * 120} direction="up">
+                <div className="glass-card p-6 sm:p-8 h-full text-center hover:border-gold-400/50 transition-all duration-500 group card-sheen hover:-translate-y-1">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 border border-gold-400/30 flex items-center justify-center mx-auto mb-5 sm:mb-6 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
                     <item.icon size={22} className="text-gold-300 sm:w-6 sm:h-6" />
                   </div>
                   <h3 className="font-serif text-xl sm:text-2xl text-ink-50 mb-2 sm:mb-3">{item.title}</h3>
-                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed">{item.description}</p>
+                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed font-light">{item.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -126,34 +136,32 @@ export default function WomenLeadership() {
       </section>
 
       {/* Initiatives */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Initiatives"
-              title={<>Programs that <span className="text-gradient-gold">create change</span></>}
-              subtitle="Structured initiatives driving measurable impact for women across communities."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Initiatives"
+            title={<>Programs that <span className="text-gradient-gold">create change</span></>}
+            subtitle="Structured initiatives driving measurable impact for women across communities."
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {initiatives.map((item, i) => (
-              <Reveal key={item.title} delay={i * 80}>
-                <div className="glass-card p-5 sm:p-6 h-full hover:border-gold-400/30 transition-all duration-500">
-                  <div className="flex items-start gap-3 mb-2 sm:mb-3">
+              <Reveal key={item.title} delay={i * 80} direction="up">
+                <div className="glass-card p-6 sm:p-7 h-full hover:border-gold-400/50 transition-all duration-500 group card-sheen hover:-translate-y-1">
+                  <div className="flex items-start gap-3 mb-3">
                     <CheckCircle2 size={18} className="text-gold-400 mt-0.5 flex-shrink-0" />
                     <h3 className="font-serif text-lg sm:text-xl text-ink-50">{item.title}</h3>
                   </div>
-                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed pl-7">{item.desc}</p>
+                  <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed font-light pl-7">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
-
       {/* Upcoming Events */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
         <div className="section-padding">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <Reveal>

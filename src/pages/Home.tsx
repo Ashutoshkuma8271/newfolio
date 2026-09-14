@@ -61,10 +61,10 @@ export default function Home() {
       >
         {/* Background image - precisely positioned with smooth hardware-accelerated parallax motion */}
         <div
-          className="absolute inset-0 bg-cover bg-[center_top_15%] sm:bg-[right_8%_top_22%] md:bg-[right_10%_top_25%] lg:bg-[right_8%_top_28%] xl:bg-[right_6%_top_30%] transition-transform duration-700 ease-out will-change-transform scale-105"
+          className="absolute inset-0 bg-cover bg-[center_top_15%] sm:bg-[right_8%_top_22%] md:bg-[right_10%_top_25%] lg:bg-[right_8%_top_28%] xl:bg-[right_6%_top_30%] will-change-transform scale-105"
           style={{
             backgroundImage: `url(${heroPortrait})`,
-            transform: `translate3d(0, ${Math.min(50, Math.max(-50, heroParallax.offset * 0.15))}px, 0) scale(1.05)`,
+            transform: `translate3d(0, ${Math.min(45, Math.max(-45, heroParallax.offset * 0.12))}px, 0) scale(1.05)`,
           }}
         />
         {/* Cinematic overlays - transparent on the right to reveal the subject, dark on the left for text readability */}
@@ -130,63 +130,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Media Logos */}
-      <section className="py-12 sm:py-16 border-y border-gold-400/10 bg-ink-900">
-        <div className="section-padding">
-          <p className="text-center font-sans text-[11px] sm:text-xs tracking-[0.3em] uppercase text-ink-400 mb-8 sm:mb-10">
-            Featured In
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-5 sm:gap-y-6">
-            {mediaLogos.map((logo) => (
-              <span
-                key={logo}
-                className="font-serif text-lg sm:text-xl md:text-2xl text-ink-400 hover:text-gold-300 transition-colors duration-500 cursor-default"
-              >
-                {logo}
-              </span>
-            ))}
-          </div>
+      {/* Featured Media Logos with subtle luxury background */}
+      <section className="py-12 sm:py-16 border-y border-gold-400/10 bg-ink-900/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-40 pointer-events-none" />
+        <div className="section-padding relative">
+          <Reveal direction="down">
+            <p className="text-center font-display text-[11px] sm:text-xs tracking-[0.3em] uppercase text-gold-400/80 mb-8 sm:mb-10 font-medium">
+              Featured In Major Publications
+            </p>
+          </Reveal>
+          <Reveal direction="up" delay={150}>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-5 sm:gap-y-6">
+              {mediaLogos.map((logo) => (
+                <span
+                  key={logo}
+                  className="font-serif text-lg sm:text-xl md:text-2xl text-ink-300 hover:text-gold-300 transition-all duration-500 hover:scale-105 cursor-default"
+                >
+                  {logo}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Key Verticals */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <div className="text-center mb-14 sm:mb-20 max-w-3xl mx-auto">
-              <p className="heading-eyebrow">Areas of Impact</p>
+      {/* Key Verticals with Premium Cards */}
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        {/* Ambient light glow behind cards */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gold-400/5 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="section-padding relative z-10">
+          <div className="text-center mb-14 sm:mb-20 max-w-3xl mx-auto">
+            <Reveal direction="down">
+              <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-6 sm:w-10 h-px bg-gold-400/80" />
+                <p className="heading-eyebrow !mb-0">Areas of Impact</p>
+                <div className="w-6 sm:w-10 h-px bg-gold-400/80" />
+              </div>
+            </Reveal>
+            <Reveal direction="up" delay={100}>
               <h2 className="heading-serif mb-4 sm:mb-5">
                 Four Verticals. <span className="text-gradient-gold">One Vision.</span>
               </h2>
-              <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed">
+            </Reveal>
+            <Reveal direction="up" delay={200}>
+              <p className="font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed font-light">
                 Each domain is a pillar of a broader mission — connecting markets, amplifying voices,
                 and building lasting institutions across the GCC and India.
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {verticals.map((v, i) => (
-              <Reveal key={v.title} delay={i * 120}>
+              <Reveal key={v.title} delay={i * 120} direction={i % 2 === 0 ? 'left' : 'right'}>
                 <Link
                   to={v.link}
-                  className="group relative h-80 sm:h-96 overflow-hidden block"
+                  className="group relative h-80 sm:h-96 block premium-card card-sheen"
                 >
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110 will-change-transform"
                     style={{ backgroundImage: `url(${v.image})` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/60 to-transparent transition-opacity duration-500 group-hover:from-ink-950" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/65 to-transparent transition-opacity duration-500 group-hover:from-ink-950/90" />
 
-                  <div className="absolute inset-0 p-6 sm:p-8 md:p-10 flex flex-col justify-end">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 border border-gold-400/30 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
+                  <div className="absolute inset-0 p-6 sm:p-8 md:p-10 flex flex-col justify-end z-10">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 border border-gold-400/30 flex items-center justify-center mb-3 sm:mb-4 bg-ink-950/60 backdrop-blur-sm group-hover:bg-gold-400/20 group-hover:border-gold-400/70 group-hover:scale-105 transition-all duration-500">
                       <v.icon size={20} className="text-gold-300 sm:w-[22px] sm:h-[22px]" />
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-ink-50 mb-2">{v.title}</h3>
-                    <p className="font-sans text-xs sm:text-sm text-ink-200 leading-relaxed max-w-md mb-3 sm:mb-4">
+                    <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-ink-50 mb-2 transition-colors duration-300 group-hover:text-gold-200">{v.title}</h3>
+                    <p className="font-sans text-xs sm:text-sm text-ink-200 leading-relaxed max-w-md mb-3 sm:mb-4 font-light">
                       {v.description}
                     </p>
-                    <div className="flex items-center gap-2 text-gold-300 font-sans text-xs tracking-[0.2em] uppercase">
+                    <div className="flex items-center gap-2 text-gold-300 font-display text-xs tracking-[0.2em] uppercase font-medium">
                       Explore
                       <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-2" />
                     </div>

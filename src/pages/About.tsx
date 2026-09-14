@@ -66,16 +66,19 @@ export default function About() {
       />
 
       {/* Biography */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <Reveal>
+            <Reveal direction="left">
               <div>
-                <p className="heading-eyebrow">Biography</p>
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-5 sm:w-8 h-px bg-gold-400" />
+                  <p className="heading-eyebrow !mb-0">Biography</p>
+                </div>
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-50 mb-6 sm:mb-8 leading-tight">
-                  A life dedicated to building bridges
+                  A life dedicated to <span className="text-gradient-gold">building bridges</span>
                 </h2>
-                <div className="space-y-4 sm:space-y-5 font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed">
+                <div className="space-y-4 sm:space-y-5 font-sans text-xs sm:text-sm md:text-base text-ink-300 leading-relaxed font-light">
                   <p>
                     Zeenat Kureshi is a multifaceted leader whose career embodies the convergence of
                     trade, media, and social empowerment. As the GCC–India Trade Commissioner, she has
@@ -99,21 +102,21 @@ export default function About() {
               </div>
             </Reveal>
 
-            <Reveal delay={200}>
-              <div className="relative">
+            <Reveal delay={200} direction="right">
+              <div className="relative group">
                 <div
-                  className="aspect-[4/5] bg-cover bg-top"
+                  className="aspect-[4/5] bg-cover bg-top premium-card card-sheen shadow-2xl transition-all duration-700 group-hover:scale-[1.02]"
                   style={{ backgroundImage: `url(${heroImg})` }}
                 />
-                <div className="absolute -bottom-6 -left-6 glass-card p-6 max-w-xs hidden md:block">
+                <div className="absolute -bottom-6 -left-6 glass-card p-6 max-w-xs hidden md:block border border-gold-400/30 shadow-2xl backdrop-blur-xl">
                   <div className="flex gap-3 mb-4">
                     {roles.map((r, i) => (
-                      <div key={i} className="w-10 h-10 border border-gold-400/30 flex items-center justify-center">
+                      <div key={i} className="w-10 h-10 border border-gold-400/40 flex items-center justify-center bg-gold-400/10">
                         <r.icon size={18} className="text-gold-300" />
                       </div>
                     ))}
                   </div>
-                  <p className="font-sans text-xs text-ink-300 leading-relaxed">
+                  <p className="font-sans text-xs text-ink-200 leading-relaxed font-light">
                     Four roles, one mission — connecting markets, amplifying voices, empowering communities.
                   </p>
                 </div>
@@ -124,35 +127,34 @@ export default function About() {
       </section>
 
       {/* Leadership Journey */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Leadership Journey"
-              title={<>A path of <span className="text-gradient-gold">purpose</span></>}
-              subtitle="From commerce to cinema to community leadership — each chapter built on the last."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Leadership Journey"
+            title={<>A path of <span className="text-gradient-gold">purpose</span></>}
+            subtitle="From commerce to cinema to community leadership — each chapter built on the last."
+          />
 
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold-400/40 via-gold-400/20 to-transparent" />
 
             {journey.map((item, i) => (
-              <Reveal key={item.title} delay={i * 150}>
+              <Reveal key={item.title} delay={i * 150} direction={i % 2 === 0 ? 'left' : 'right'}>
                 <div className={`relative flex flex-col md:flex-row gap-6 md:gap-8 mb-10 sm:mb-12 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Dot */}
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold-400 ring-4 ring-ink-900 z-10 mt-2" />
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold-400 ring-4 ring-ink-900 z-10 mt-2 shadow-[0_0_12px_rgba(212,168,67,0.8)]" />
 
                   {/* Content */}
                   <div className="md:w-1/2 pl-10 sm:pl-12 md:pl-0 md:px-8">
-                    <div className="glass-card p-5 sm:p-6">
-                      <span className="font-sans text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400 flex items-center gap-2 mb-2 sm:mb-3">
+                    <div className="glass-card p-5 sm:p-6 card-sheen hover:border-gold-400/50 transition-all duration-500 hover:-translate-y-1">
+                      <span className="font-display text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400 flex items-center gap-2 mb-2 sm:mb-3 font-semibold">
                         <Calendar size={12} />
                         {item.year}
                       </span>
                       <h3 className="font-serif text-xl sm:text-2xl text-ink-50 mb-1.5 sm:mb-2">{item.title}</h3>
-                      <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed">{item.description}</p>
+                      <p className="font-sans text-xs sm:text-sm text-ink-300 leading-relaxed font-light">{item.description}</p>
                     </div>
                   </div>
                   <div className="hidden md:block md:w-1/2" />
@@ -164,20 +166,18 @@ export default function About() {
       </section>
 
       {/* International Roles */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="International Roles"
-              title={<>Global <span className="text-gradient-gold">appointments</span></>}
-              subtitle="Positions held across borders, each reflecting a commitment to bilateral progress."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="International Roles"
+            title={<>Global <span className="text-gradient-gold">appointments</span></>}
+            subtitle="Positions held across borders, each reflecting a commitment to bilateral progress."
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {roles.map((role, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="glass-card p-6 sm:p-8 text-center h-full hover:border-gold-400/30 transition-all duration-500 group">
+              <Reveal key={i} delay={i * 100} direction="up">
+                <div className="glass-card p-6 sm:p-8 text-center h-full hover:border-gold-400/50 transition-all duration-500 group card-sheen hover:-translate-y-1">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 sm:mb-5 group-hover:bg-gold-400/10 group-hover:border-gold-400/60 transition-all duration-500">
                     <role.icon size={22} className="text-gold-300" />
                   </div>
@@ -190,28 +190,27 @@ export default function About() {
       </section>
 
       {/* Awards & Recognitions */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Awards & Recognitions"
-              title={<>Honored for <span className="text-gradient-gold">impact</span></>}
-              subtitle="Recognition from institutions across trade, media, and community leadership."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Awards & Recognitions"
+            title={<>Honored for <span className="text-gradient-gold">impact</span></>}
+            subtitle="Recognition from institutions across trade, media, and community leadership."
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {awards.map((award, i) => (
-              <Reveal key={award.title} delay={i * 80}>
-                <div className="glass-card p-5 sm:p-6 group hover:border-gold-400/30 transition-all duration-500 h-full">
+              <Reveal key={award.title} delay={i * 80} direction="up">
+                <div className="glass-card p-5 sm:p-6 group hover:border-gold-400/50 transition-all duration-500 h-full card-sheen hover:-translate-y-1">
                   <div className="flex items-start gap-4">
                     <div className="w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 border border-gold-400/30 flex items-center justify-center group-hover:bg-gold-400/10 transition-all duration-500">
                       <Award size={18} className="text-gold-300" />
                     </div>
                     <div>
                       <h3 className="font-serif text-lg sm:text-xl text-ink-50 mb-1">{award.title}</h3>
-                      <p className="font-sans text-xs sm:text-sm text-ink-300">{award.org}</p>
-                      <p className="font-sans text-[11px] sm:text-xs text-gold-400 mt-1.5 sm:mt-2 tracking-wider">{award.year}</p>
+                      <p className="font-sans text-xs sm:text-sm text-ink-300 font-light">{award.org}</p>
+                      <p className="font-display text-[11px] sm:text-xs text-gold-400 mt-1.5 sm:mt-2 tracking-wider font-medium">{award.year}</p>
                     </div>
                   </div>
                 </div>
@@ -222,31 +221,29 @@ export default function About() {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Gallery"
-              title={<>Professional <span className="text-gradient-gold">portfolio</span></>}
-              subtitle="A visual journey through leadership, events, and public engagements."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Gallery"
+            title={<>Professional <span className="text-gradient-gold">portfolio</span></>}
+            subtitle="A visual journey through leadership, events, and public engagements."
+          />
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {galleryImages.map((img, i) => (
-              <Reveal key={i} delay={i * 80}>
+              <Reveal key={i} delay={i * 80} direction="zoom">
                 <div
-                  className={`relative overflow-hidden group cursor-pointer ${
+                  className={`relative overflow-hidden group cursor-pointer premium-card card-sheen ${
                     i === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : ''
                   }`}
                 >
                   <div
-                    className={`bg-cover bg-center transition-transform duration-1000 group-hover:scale-110 ${
+                    className={`bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110 will-change-transform ${
                       i === 0 ? 'h-full min-h-[280px] sm:min-h-[400px]' : 'h-48 sm:h-64 md:h-72'
                     }`}
                     style={{ backgroundImage: `url(${img})` }}
                   />
-                  <div className="absolute inset-0 bg-ink-950/20 group-hover:bg-ink-950/0 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-ink-950/25 group-hover:bg-ink-950/0 transition-all duration-500" />
                 </div>
               </Reveal>
             ))}

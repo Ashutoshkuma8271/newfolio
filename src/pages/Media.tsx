@@ -47,33 +47,31 @@ export default function Media() {
         image={heroImg}
       />
 
-      {/* Press Coverage */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Press Coverage"
-              title={<>In the <span className="text-gradient-gold">headlines</span></>}
-              subtitle="Selected features and coverage from leading publications."
-            />
-          </Reveal>
+      {/* Press Articles */}
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Press Coverage"
+            title={<>Featured across <span className="text-gradient-gold">global outlets</span></>}
+            subtitle="Selected articles, interviews, and media profiles highlighting work in trade, film, and leadership."
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {pressCoverage.map((item, i) => (
-              <Reveal key={i} delay={i * 80}>
+              <Reveal key={i} delay={i * 80} direction="up">
                 <a
                   href="#"
-                  className="glass-card p-5 sm:p-6 block h-full hover:border-gold-400/30 transition-all duration-500 group"
+                  className="glass-card p-5 sm:p-6 block h-full hover:border-gold-400/50 transition-all duration-500 group card-sheen hover:-translate-y-1.5"
                 >
                   <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
                     <Newspaper size={18} className="text-gold-300" />
-                    <span className="font-sans text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400">{item.outlet}</span>
+                    <span className="font-display text-[11px] sm:text-xs tracking-[0.2em] uppercase text-gold-400 font-semibold">{item.outlet}</span>
                   </div>
                   <h3 className="font-serif text-lg sm:text-xl text-ink-50 mb-3 leading-snug group-hover:text-gold-200 transition-colors duration-300">
                     {item.headline}
                   </h3>
                   <div className="flex items-center justify-between pt-2 border-t border-gold-400/10">
-                    <span className="font-sans text-[11px] sm:text-xs text-ink-400">{item.date}</span>
+                    <span className="font-sans text-[11px] sm:text-xs text-ink-400 font-light">{item.date}</span>
                     <ExternalLink size={14} className="text-ink-500 group-hover:text-gold-300 transition-colors" />
                   </div>
                 </a>
@@ -84,29 +82,28 @@ export default function Media() {
       </section>
 
       {/* YouTube Interviews */}
-      <section className="py-20 sm:py-24 md:py-32 bg-ink-900">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Interviews"
-              title={<>Watch the <span className="text-gradient-gold">conversations</span></>}
-              subtitle="Featured interviews and talks on trade, media, and leadership."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 bg-ink-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-luxury-pattern opacity-30 pointer-events-none" />
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Interviews"
+            title={<>Watch the <span className="text-gradient-gold">conversations</span></>}
+            subtitle="Featured interviews and talks on trade, media, and leadership."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {interviews.map((video, i) => (
-              <Reveal key={i} delay={i * 120}>
+              <Reveal key={i} delay={i * 120} direction="up">
                 <div className="group cursor-pointer">
-                  <div className="relative aspect-video overflow-hidden bg-ink-950">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-gold-400/50 flex items-center justify-center group-hover:bg-gold-400/20 group-hover:border-gold-400 transition-all duration-500">
+                  <div className="relative aspect-video overflow-hidden bg-ink-950 premium-card card-sheen">
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-gold-400/50 flex items-center justify-center bg-ink-950/60 backdrop-blur-sm group-hover:bg-gold-400/20 group-hover:border-gold-400 group-hover:scale-110 transition-all duration-500">
                         <Play size={22} className="text-gold-300 ml-1 sm:w-6 sm:h-6" fill="currentColor" />
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                      <span className="font-sans text-xs text-gold-300 tracking-wider">{video.source}</span>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
+                      <span className="font-display text-xs text-gold-300 tracking-wider font-semibold">{video.source}</span>
                     </div>
                   </div>
                   <h3 className="font-serif text-lg sm:text-xl text-ink-50 mt-3 sm:mt-4 leading-snug group-hover:text-gold-200 transition-colors duration-300">
@@ -120,26 +117,23 @@ export default function Media() {
       </section>
 
       {/* Event Gallery */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="section-padding">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Event Gallery"
-              title={<>Moments from the <span className="text-gradient-gold">stage</span></>}
-              subtitle="Speaking engagements, conferences, and public appearances."
-            />
-          </Reveal>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden bg-luxury-pattern">
+        <div className="section-padding relative z-10">
+          <SectionHeading
+            eyebrow="Event Gallery"
+            title={<>Moments from the <span className="text-gradient-gold">stage</span></>}
+            subtitle="Speaking engagements, conferences, and public appearances."
+          />
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {eventImages.map((img, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <div className="relative overflow-hidden group cursor-pointer h-48 sm:h-64 md:h-80">
+              <Reveal key={i} delay={i * 80} direction="zoom">
+                <div className="relative overflow-hidden group cursor-pointer h-48 sm:h-64 md:h-80 premium-card card-sheen">
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110 will-change-transform"
                     style={{ backgroundImage: `url(${img})` }}
                   />
-                  <div className="absolute inset-0 bg-ink-950/30 group-hover:bg-ink-950/10 transition-all duration-500" />
-                  <div className="absolute inset-0 border border-transparent group-hover:border-gold-400/30 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-ink-950/20 group-hover:bg-ink-950/0 transition-all duration-500" />
                 </div>
               </Reveal>
             ))}
